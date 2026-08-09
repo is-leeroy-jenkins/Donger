@@ -5141,7 +5141,6 @@ if mode == 'Text':
 			
 			role = str( msg.get( 'role', 'assistant', ) )
 			content = str( msg.get( 'content', '', ) )
-			
 			with st.chat_message( role, avatar=get_text_avatar( role ), ):
 				st.markdown( content )
 		if True:
