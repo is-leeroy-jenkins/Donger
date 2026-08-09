@@ -5191,7 +5191,6 @@ if mode == 'Text':
 						response_obj = (getattr( text, 'response', None, ) or response)
 						response_text = str( response or '' ).strip( )
 						streamed_text = ''.join( stream_buffer ).strip( )
-						
 						if streamed_text:
 							response_text = streamed_text
 						
@@ -5203,8 +5202,8 @@ if mode == 'Text':
 						else:
 							st.markdown( response_text )
 						
-						st.session_state[ 'text_messages' ].append(
-							{ 'role': 'assistant', 'content': response_text, } )
+						st.session_state[ 'text_messages' ].append( { 'role': 'assistant',
+							'content': response_text, } )
 						st.session_state[ 'text_context' ] = build_text_context( )
 						st.session_state[ 'last_answer' ] = response_text
 						
