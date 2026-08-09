@@ -7,9 +7,9 @@
   &bull;
   <a href="#core-capabilities">Core Capabilities</a>
   &bull;
-  <a href="#model-integration">LLM Integration</a>
+  <a href="#model-integration">Model Integration</a>
   &bull;
-  <a href="#-required-api-keys">API Keys</a>
+  <a href="#-configuration">Configuration</a>
   &bull;
   <a href="#-installation">Installation</a>
   &bull;
@@ -24,13 +24,16 @@
 
 ___
 
-
 [![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-0078FC?style=for-the-badge&logo=github)](https://is-leeroy-jenkins.github.io/Donger/)
 
-Donger is an AI tool designed to support federal budget/financial analysts, managers, and policy professionals. It integrates large language model based xAI's Grok 3/4
-for retrieval-augmented generation (RAG), semantic searching, and structured prompt engineering to assist with interpretation of financial
-guidance, budget execution data  and a vectorized data set of financial policy documents. Donger is integrated
-with  **Grok**  and has been **fine-tuned** on vectorized datasets of inancial management and policy datasets hosted on Huggingface:
+Donger is a Grok-powered, multimodal Streamlit application for federal budget, financial
+management, defense, and policy analysis. It combines conversational and structured text
+generation, image and audio workflows, document-grounded question answering, embeddings, xAI
+file and Collection management, prompt governance, and SQLite-based data administration in one
+analyst-oriented interface.
+
+The current application is designed exclusively for the **xAI Grok API**. OpenAI and Gemini
+provider modes are not part of this version.
 
 ## 🎥 Demo
 
@@ -39,29 +42,31 @@ with  **Grok**  and has been **fine-tuned** on vectorized datasets of inancial m
 ## Core Capabilities
 
 | Mode | Description |
-  | ----------------------- | ---------------------------------------------------------------- |
-| 📝 **Text Generation**  | Structured LLM interaction with full parameter control |
-| 🖼 **Image Generation** | Prompt-based image synthesis with provider configuration |
-| 🔊 **Audio Processing** | Text-to-Speech and Speech-to-Text workflows |
-| 📚 **Document Q&A**     | Context-aware querying of uploaded or embedded documents |
-| 🧬 **Embeddings**       | Vector creation and similarity-based search |
-| 🗄 **Vector Stores**    | Persistent semantic storage (SQLite / Chroma / others)           |
-| 🧾 **Data Management**  | Schema inspection, profiling, import/export, and transformations |
-| 🛠 **Utilities**        | Runtime configuration, environment inspection, reset tools |
+| --- | --- |
+| 💬 **Chat** | Lightweight conversational interaction with Grok and session-scoped message history |
+| 📝 **Text** | Configurable text generation with model, inference, grounding, tool, response-format, and system-instruction controls |
+| 🖼 **Images** | Image generation, editing, variation, and multimodal image analysis workflows exposed by the Grok wrapper |
+| 🔊 **Audio** | Text-to-speech, transcription, translation, and audio-analysis workflows exposed by the Grok wrapper |
+| 📚 **Document Q&A** | Upload, extract, chunk, and query supported documents with source-aware answers |
+| 🧬 **Embeddings** | Generate, inspect, download, and persist text embeddings for semantic retrieval |
+| 📁 **Files** | Upload, list, inspect, download, and delete xAI-managed files |
+| 🗂️ **Collections** | Create and manage xAI Collections, attach documents, search grounded content, and converse against selected Collections |
+| 🧩 **Prompt Engineering** | Create, search, edit, version, convert, and delete reusable prompt records |
+| 🏛️ **Data Management** | Import, profile, filter, visualize, export, index, alter, and query local SQLite data |
 
 ## 🧊 Azure
 
 [![Containerized](https://img.shields.io/badge/Docker-App-2496ED?logo=docker&logoColor=white)](https://Donger.thankfulocean-66471d87.eastus.azurecontainerapps.io)
 
-- Containerized application prototype
+* Containerized application deployment.
 
-## 🔥 Streamlit 
+## 🔥 Streamlit
 
 [![Streamlit App](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)](https://budget-Donger-py.streamlit.app/)
 
-- A Python framework to build dynamic, interactive web applications.
-
-- Execute chat queries against federal financial management documentation
+* Interactive, wide-layout analytical interface.
+* Direct chat and retrieval queries against federal financial-management and defense guidance.
+* Session-based controls for Grok credentials, models, prompts, files, and analytical results.
 
 ![](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/Donger-chat.gif)
 
@@ -69,145 +74,164 @@ with  **Grok**  and has been **fine-tuned** on vectorized datasets of inancial m
 
 [![Donger](https://img.shields.io/badge/Databricks-Donger-FF3621?logo=databricks&logoColor=white)](https://dbc-a0c21f80-7bb3.cloud.databricks.com/browse/folders/3169291152438532?o=7474645703081351)
 
-- A data engineering, analytics, and artificial intelligence collaborative workspace
-
-- Customize the knowledge-base, use computer vision, and text embeddings
+* Collaborative data-engineering, analytics, and artificial-intelligence workspace.
+* Supports knowledge-base customization, computer-vision workflows, and text embeddings.
 
 ![](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/Donger-demo.gif)
 
 ## Model Integration
 
-### Grok 3/4 (Primary Inference Engine)
+### xAI Grok
 
-Donger uses **Grok 3** via the Responses API as its primary inference engine. The
-application is structured to support:
+Donger routes provider-backed functionality through the local `grok` wrapper. The interface
+discovers wrapper capabilities at runtime and exposes only modes backed by an available Grok
+class. The configured model families include Grok reasoning/text models and Grok image-generation
+and image-editing models.
 
-* Structured response outputs (text, sources, analytical artifacts)
-* Tool-generated analysis (tables, derived files)
+Depending on the selected model and wrapper capability, Donger supports:
 
-### Fine-Tuned Models on Hugging Face
+* Multi-turn chat and text generation.
+* Configurable temperature, top-p, penalties, token limits, stop sequences, storage, streaming,
+  and reasoning controls.
+* Web search and xAI Collections search for grounded responses.
+* Plain text, JSON object, and JSON Schema response formats.
+* Image generation, image editing, and multimodal analysis.
+* Audio generation and speech-processing workflows.
+* File lifecycle and Collection document management.
 
-[![HuggingFace](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-sm.svg)](https://huggingface.co/leeroy-jankins/models)
+### Domain Knowledge Collections
 
-In addition to base Grok capabilities, Donger is designed to leverage **fine-tuned large
-language models hosted on Hugging Face**, trained on:
+Donger is configured to work with xAI Collections covering federal financial regulations, public
+laws, explanatory statements, governance material, DoD data and regulations, Army field manuals,
+Army techniques publications, and Army style guides. Collection identifiers remain configuration
+data and should be replaced with identifiers available to the deployed xAI account.
 
-* Federal budget execution data
-* Appropriations and fiscal law guidance
-* DoD-specific and government-wide policy documentation
-* Structured tabular datasets used in budget reporting and analysis
+### Hugging Face Datasets
 
-These fine-tuned models improve:
+[![HuggingFace](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-sm.svg)](https://huggingface.co/leeroy-jankins/datasets)
 
-* Domain-specific accuracy
-* Terminology alignment (OMB, DoD, Treasury, GAO)
-* Consistency when answering budget and execution questions
+The project references curated datasets covering federal budget execution, appropriations and
+fiscal law, accounting and audit standards, and DoD policy documentation. These repositories are
+knowledge sources for retrieval and evaluation; this application does not load a Hugging Face
+fine-tuned model directly in the current source.
 
-## 🔑 Required API Keys
+## 🔑 Configuration
 
-- Donger’s capabilities are provided with system instructions for each below.
-- Each provider provides language models, embedding models, image generators, or audio systems
-- Donger gives users flexibility the ability to improve accuracy by comparing output across model
-  ecosystems.
+Obtain xAI credentials using the project’s [Grok API setup instructions](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/setup/xai.md),
+then configure the environment as described in the [environment setup guide](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/setup/environments.md).
 
-#### Instructions
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `XAI_API_KEY` | Yes | Grok inference, generation, embeddings, and standard file operations |
+| `XAI_MANAGEMENT_KEY` | For management workflows | xAI Collection and management-plane operations when required by the wrapper |
+| `XAI_MANAGEMENT_BASE_URL` | Optional | Overrides the configured xAI management endpoint |
+| `LOG_DIR` | Optional | Overrides the local exception-log directory |
+| `LOG_PATH` | Optional | Overrides the SQLite exception-log path |
+| `LOG_FILE` | Optional | Overrides the exception-log table or logical file name |
 
-- [OpenAI API Key](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/setup/openai.md)
-- [Grok API Key](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/setup/xai.md)
-- [Gemini API Key](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/setup/gemini.md)
-
-## 🔐 Environment Variables
-
-- After obtaining the api keys, set environment variables following instructions
-  found [here](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/setup/environments.md)
-
-| Variable          | Required For |
-| ----------------- | ------------ |
-| GOOGLE_API_KEY    | Gemini       |
-| GROK_API_KEY      | Grok         |
+The standard xAI API base URL is configured as `https://api.x.ai/v1`. API keys may also be entered
+at runtime through the Streamlit sidebar. Treat credentials as secrets and do not commit them to
+source control.
 
 ## 📦 Installation
-```python
-    python -m venv .venv
-    .venv\Scripts\activate  # Windows
-    python -m pip install - r requirements.txt
-    streamlit run app.py
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+streamlit run app.py
 ```
+
+For Command Prompt, activate the environment with `.venv\Scripts\activate.bat`. On Linux or macOS,
+use `source .venv/bin/activate`.
+
+The repository must also contain the project-local `grok` wrapper and `boogr` package imported by
+`app.py`, together with the configured `resources/`, `stores/`, and `logging/` directories.
 
 ## Application Features
 
-### 1. Conversational Chat Interface
+### 1. Chat and Text Generation
 
-* Analyst-oriented natural language interaction
-* Execution modes:
+* Chat mode provides a focused Grok conversation with retained session messages.
+* Text mode provides detailed model, inference, grounding, response, and instruction controls.
+* Prompt templates can be filtered by category and loaded into the active instruction editor.
+* Responses can include extracted text, sources, structured content, and downloadable artifacts.
 
-    * **Standard**
-    * **Guidance Only**
-    * **Analysis Only**
-* Custom chat avatars and branding support
-* Session-scoped conversational context
+### 2. Grounding and Source Attribution
 
-### 2. Source Attribution & Guidance Review
+* Web search can be constrained by allowed domains.
+* Collections search grounds responses in selected xAI knowledge collections.
+* Response parsing extracts source titles, URLs, snippets, file citations, and Collection metadata
+  when returned by the provider.
+* Source-aware output supports review and auditability; it does not replace source validation.
 
-* Automatic extraction of source references
-* Display of document titles, snippets, and links
-* Supports auditability and defensible analysis
+### 3. Images and Audio
 
-### 3. Analytical Artifacts
+* Image workflows support provider-advertised generation, editing, variation, and analysis options.
+* Uploaded images can be supplied to multimodal Grok models with configurable detail levels.
+* Audio workflows support provider-advertised speech synthesis, transcription, translation, and
+  analysis operations.
+* Generated or transformed media can be previewed and downloaded from the application.
 
-* Tables and text generated by model-driven analysis
-* Downloadable files produced during reasoning
-* Dedicated Analysis tab for structured outputs
+### 4. Document Q&A
 
-### 4. Prompt & System Instruction Management
+* Accepts PDF, text, Markdown, Word, JSON, CSV, and Excel documents.
+* Extracts text, applies configurable cleaning, and segments content by sentences with a token-window
+  fallback.
+* Builds local semantic context with sentence-transformer embeddings and similarity ranking.
+* Sends selected context and the user’s question to Grok for a grounded answer.
+* Maintains separate instructions, document state, messages, answers, and source output.
 
-* SQLite-backed prompt repository
-* Create, edit, load, and version system instructions
-* Convert between:
+### 5. Embeddings
 
-    * XML-delimited instruction blocks
-    * Markdown representations
+* Accepts direct text, uploaded content, processed text, or chunked input.
+* Generates embeddings through the Grok embeddings wrapper when available.
+* Displays vector dimensions, record counts, previews, and output tables.
+* Supports CSV export and local SQLite persistence for downstream semantic search.
 
-This enables controlled experimentation and governance of AI behavior.
+### 6. Files and Collections
 
-### 5. Retrieval-Augmented Generation (RAG)
+* Files mode manages xAI-hosted assets through upload, list, retrieve, content, download, and delete
+  operations exposed by the wrapper.
+* Collections mode creates, lists, selects, updates, and deletes Collections.
+* Documents can be uploaded and attached to a Collection, listed, inspected, and removed.
+* Selected Collections can ground an interactive conversation through Collections Search.
 
-* Upload reference documents
-* Chunk and inject relevant context into prompts
-* Ground responses in authoritative material rather than model priors alone
+### 7. Prompt Engineering
 
-### 6. Semantic Search
+* Stores prompt name, category, content, version, variables, description, and timestamps in SQLite.
+* Provides search, sorting, pagination, record selection, and an authoritative editor.
+* Supports create, update, delete, clear, load, and XML/Markdown instruction conversion workflows.
 
-* Sentence-level embeddings
-* SQLite-backed vector storage
-* Cosine similarity scoring
-* Reusable embedded corpora across sessions
+### 8. Data Management
 
-### 7. Export & Reporting
-
-* Export system instructions as XML or Markdown
-* Export chat history as Markdown or PDF
-* Designed for briefings, documentation, and archival use
+* Uses a local SQLite database at `stores/sqlite/Data.db` by default.
+* Imports structured data, profiles tables, filters rows, aggregates values, and renders Plotly
+  visualizations.
+* Exports query and table results and supports index, table, column, and schema administration.
+* Provides a guarded SQL console that blocks multiple statements and destructive keywords.
 
 ## Data Storage & Architecture
 
-* Local SQLite database for:
+| Layer | Responsibility |
+| --- | --- |
+| Streamlit UI | Mode selection, session state, controls, previews, tables, charts, and downloads |
+| Grok wrapper | xAI text, image, audio, embeddings, files, and Collections API contracts |
+| Local processing | Document extraction, cleaning, chunking, tokenization, similarity scoring, and response normalization |
+| SQLite | Prompt records, imported analytical data, embeddings, metadata, and exception logging |
+| xAI Files and Collections | Provider-hosted document lifecycle and managed retrieval resources |
+| Resources | Application images, avatars, favicon, and supporting static assets |
 
-    * Prompt storage
-    * Semantic embeddings
-    * (Planned) chat history persistence
-    * Modular design anticipates:
-    * External vector databases
-    * Centralized prompt registries
-    * Multi-user or shared analytical environments
+Local prompt and data records persist in SQLite. Streamlit interaction state is session-scoped.
+xAI-hosted files and Collections persist according to the xAI account and API lifecycle.
 
 ## Intended Users
 
-* Federal budget analysts
-* Financial management professionals
-* DoD and civilian agency policy analysts
-* Data scientists supporting budget formulation and execution
-* Program and portfolio analysts requiring explainable AI assistance
+* Federal budget and financial-management analysts.
+* DoD and civilian-agency policy professionals.
+* Program, portfolio, audit, and compliance analysts.
+* Data scientists supporting formulation, execution, reporting, and semantic retrieval.
+* Managers requiring traceable analytical assistance across authoritative guidance.
 
 ## Federal Budget Guidance
 
@@ -318,44 +342,69 @@ U.S.C. 1511 - 1514 that the President review Federal expenditures at least four 
 
 ## 🖥 Core Runtime Requirements
 
-| Category                       | Component / Library | Minimum Version     | Required    | Purpose / Notes                        |
-| ------------------------------ | ------------------- | ------------------- | ----------- | -------------------------------------- |
-| **Core Runtime**               | Python              | 3.10                | Yes         | Application runtime (3.11 recommended) |
-|                                | Streamlit           | Latest stable       | Yes         | UI framework                           |
-|                                | pip                 | Latest              | Yes         | Package management                     |
-|                                | virtualenv / venv   | Any                 | Recommended | Environment isolation                  |
-| **AI Providers**               | openai              | Latest              | Optional    | OpenAI Text, Image, Audio, Embeddings  |
-|                                | anthropic           | Latest              | Optional    | Claude models                          |
-|                                | google-generativeai | Latest              | Optional    | Gemini models                          |
-|                                | mistralai           | Latest              | Optional    | Mistral models                         |
-|                                | groq / xai client   | Latest              | Optional    | Grok models                            |
-|                                | requests            | Latest              | Yes         | API communication layer                |
-| **Document Processing**        | pypdf (or PyPDF2)   | Latest              | Yes         | PDF text extraction                    |
-|                                | python-docx         | Latest              | Yes         | Word document parsing                  |
-|                                | chardet             | Latest              | Optional    | Encoding detection                     |
-|                                | base64 / io         | Built-in            | Yes         | Byte handling                          |
-| **Embeddings & Vector Stores** | numpy               | Latest              | Yes         | Vector math                            |
-|                                | pandas              | Latest              | Yes         | Data handling                          |
-|                                | sqlite3             | Built-in            | Yes         | Local vector persistence               |
-|                                | chromadb            | Latest              | Optional    | Persistent vector store                |
-|                                | scikit-learn        | Latest              | Optional    | Similarity utilities                   |
-| **Data Management**            | openpyxl            | Latest              | Yes         | Excel read/write                       |
-|                                | sqlalchemy          | Latest              | Optional    | External DB connectivity               |
-| **Audio Processing**           | pydub               | Latest              | Optional    | Audio manipulation                     |
-|                                | ffmpeg              | External dependency | Optional    | Audio decoding backend                 |
-|                                | soundfile           | Latest              | Optional    | Audio IO                               |
-| **Image Processing**           | Pillow (PIL)        | Latest              | Yes         | Image handling                         |
-| **Utilities**                  | python-dotenv       | Latest              | Recommended | Environment variable loading           |
-|                                | logging / traceback | Built-in            | Yes         | Runtime diagnostics                    |
-|                                | rich                | Latest              | Optional    | Structured console output              |
+| Category | Component / Library | Required | Purpose / Notes |
+| --- | --- | --- | --- |
+| **Core Runtime** | Python | Yes | Application runtime; Python 3.11 is recommended |
+| | Streamlit | Yes | Interactive web interface and session state |
+| | pip and `venv` | Yes | Dependency installation and environment isolation |
+| **Provider Integration** | Project-local `grok` wrapper | Yes | xAI inference, media, embeddings, files, and Collections operations |
+| | Project-local `boogr` package | Yes | Structured errors and SQLite exception logging |
+| **Data and Analytics** | pandas | Yes | Tables, import/export, profiling, and transformations |
+| | NumPy | Yes | Vector and numerical operations |
+| | Plotly | Yes | Interactive analytical visualizations |
+| | SQLite | Built in | Prompt, data, embedding, metadata, and log persistence |
+| | `sqlite-vec` | Feature-dependent | SQLite vector extension used by local vector operations |
+| **Documents and Embeddings** | PyMuPDF (`fitz`) | Feature-dependent | PDF extraction and rendering |
+| | sentence-transformers | Yes | Local document and query embeddings |
+| | tiktoken | Yes | Token counting and chunk sizing |
+| | openpyxl | Feature-dependent | Excel import and export through pandas |
+| **Media** | Pillow and audio codecs | Feature-dependent | Image handling and browser-compatible audio processing |
+
+Install the exact versions pinned by the repository’s `requirements.txt`. Provider model names and
+capabilities can change independently of Donger; use models returned by the installed Grok wrapper
+and enabled for the configured xAI account.
+
+## Project Structure
+
+```text
+Donger/
+├── app.py                  # Streamlit application and mode implementations
+├── config.py               # Application constants, models, modes, paths, and help text
+├── models.py               # Shared application data/configuration models
+├── grok.py                 # Project-local xAI wrapper
+├── requirements.txt        # Python dependencies
+├── .streamlit/
+│   └── config.toml         # Streamlit theme and runtime configuration
+├── resources/              # Branding, images, avatars, setup guidance, and static assets
+├── stores/
+│   └── sqlite/
+│       └── Data.db         # Default local application database
+└── logging/                # Local exception-log storage
+```
+
+The actual repository may contain additional modules and documentation. Preserve the relative
+paths configured in `config.py` when relocating application assets.
+
+## Operational Considerations
+
+* Validate model-generated conclusions against authoritative laws, regulations, policy documents,
+  source systems, and responsible officials.
+* Review retrieved citations and Collection results before relying on them in an official product.
+* Do not upload classified, controlled, privileged, procurement-sensitive, personally identifiable,
+  or otherwise restricted information unless the deployed environment and xAI account are formally
+  authorized for that data.
+* Protect API and management keys through environment variables or an approved secret store.
+* Back up `stores/sqlite/Data.db` before schema changes or destructive administrative operations.
+* Treat the built-in SQL safeguards as a user-interface control, not as a substitute for database
+  permissions, backups, or deployment security.
 
 ## Disclaimer
 
-Donger is an analytical support tool. Outputs generated by large language models should be
-independently reviewed and validated by qualified personnel before use in official decisions,
-submissions, or policy actions.
+Donger is an analytical support tool and is not an authoritative source of federal law, policy,
+accounting treatment, budget authority, or legal advice. Outputs generated by large language models
+and retrieved content should be independently reviewed and validated by qualified personnel before
+use in official decisions, submissions, reports, or policy actions.
 
 ## 📝 License
 
-- Donger is published under
-  the [MIT General Public License v3 Jan 5, 2026](https://github.com/is-leeroy-jenkins/Boo/blob/main/LICENSE).
+Donger is distributed under the [MIT License](https://github.com/is-leeroy-jenkins/Donger/blob/main/LICENSE).
