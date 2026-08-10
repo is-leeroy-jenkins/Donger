@@ -54,6 +54,7 @@ provider modes are not part of this version.
 
 ___
 
+## 📦 Architecture
 ![](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/images/donger-architecture.png)
 
 
