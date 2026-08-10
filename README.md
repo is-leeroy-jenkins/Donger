@@ -65,7 +65,7 @@ ___
 
 ## 🔥 Streamlit
 
-[![Streamlit App](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)](https://budget-Donger-py.streamlit.app/)
+[![Streamlit App](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)](https://donger-py.streamlit.app/)
 
 * Interactive, wide-layout analytical interface.
 * Direct chat and retrieval queries against federal financial-management and defense guidance.
