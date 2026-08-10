@@ -35,7 +35,7 @@ provider modes are not part of this version.
 
 ## 🎥 Demo
 
-![](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/Donger-demo.gif)
+![](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/images/Donger-demo.gif)
 
 ## Core Capabilities
 
