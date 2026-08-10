@@ -3951,21 +3951,78 @@ def get_mode_index( modes: List[ str ], current_mode: Optional[ str ] ) -> int:
 	return 0
 
 def render_provider_keys( ) -> None:
-	"""Render provider keys.
-	
+	"""Render provider credential and configuration controls.
+
 	Purpose:
-	    Renders the requested user interface element or result block in Streamlit using normalized
-	    inputs. The function keeps presentation logic isolated from provider calls and
-	    data-processing steps so the screen output remains predictable.
-	
+		Renders controls for the xAI and Google configuration values used by the application.
+		Values loaded from ``config.py`` provide the initial defaults, while manually entered
+		values override those defaults for the current Streamlit session.
+
 	Returns:
-	    None: This function performs its work through side effects and does not return a value."""
+		None: This function updates the application configuration through Streamlit session
+		state and does not return a value.
+	"""
 	with st.expander( 'Keys:', expanded=False ):
 		xai_key = st.text_input( 'xAI API Key', type='password',
 			value=get_runtime_config_value( 'xai_api_key', 'XAI_API_KEY', 'XAI_API_KEY' ),
 			help='Overrides XAI_API_KEY from config.py for this session only.',
 			key='sidebar_xai_api_key' )
+		
 		sync_provider_config( 'xai_api_key', 'XAI_API_KEY', 'XAI_API_KEY', xai_key, 'Grok' )
+		
+		xai_management_key = st.text_input( 'xAI Management Key', type='password',
+			value=get_runtime_config_value( 'xai_management_key', 'XAI_MANAGEMENT_KEY',
+				'XAI_MANAGEMENT_KEY' ),
+			help='Overrides XAI_MANAGEMENT_KEY from config.py for this session only.',
+			key='sidebar_xai_management_key' )
+		
+		sync_provider_config( 'xai_management_key', 'XAI_MANAGEMENT_KEY', 'XAI_MANAGEMENT_KEY',
+			xai_management_key, 'Grok' )
+	
+		google_key = st.text_input( 'Google API Key', type='password',
+			value=get_runtime_config_value( 'google_api_key', 'GOOGLE_API_KEY',
+				'GOOGLE_API_KEY' ),
+			help='Overrides GOOGLE_API_KEY from config.py for this session only.',
+			key='sidebar_google_api_key' )
+		
+		sync_provider_config( 'google_api_key', 'GOOGLE_API_KEY', 'GOOGLE_API_KEY', google_key,
+			'Google' )
+		
+		google_maps_key = st.text_input( 'Google Maps API Key', type='password',
+			value=get_runtime_config_value( 'googlemaps_api_key', 'GOOGLEMAPS_API_KEY',
+				'GOOGLEMAPS_API_KEY' ),
+			help='Overrides GOOGLEMAPS_API_KEY from config.py for this session only.',
+			key='sidebar_googlemaps_api_key' )
+		
+		sync_provider_config( 'googlemaps_api_key', 'GOOGLEMAPS_API_KEY', 'GOOGLEMAPS_API_KEY',
+			google_maps_key, 'Google' )
+		
+		google_cse_id = st.text_input( 'Google Custom Search Engine ID',
+			value=get_runtime_config_value( 'google_cse_id', 'GOOGLE_CSE_ID',
+				'GOOGLE_CSE_ID' ),
+			help='Overrides GOOGLE_CSE_ID from config.py for this session only.',
+			key='sidebar_google_cse_id' )
+		
+		sync_provider_config( 'google_cse_id', 'GOOGLE_CSE_ID', 'GOOGLE_CSE_ID', google_cse_id,
+			'Google' )
+		
+		google_cloud_project_id = st.text_input( 'Google Cloud Project ID',
+			value=get_runtime_config_value( 'google_cloud_project_id',
+				'GOOGLE_CLOUD_PROJECT_ID', 'GOOGLE_CLOUD_PROJECT_ID' ),
+			help='Overrides GOOGLE_CLOUD_PROJECT_ID from config.py for this session only.',
+			key='sidebar_google_cloud_project_id' )
+		
+		sync_provider_config( 'google_cloud_project_id', 'GOOGLE_CLOUD_PROJECT_ID',
+			'GOOGLE_CLOUD_PROJECT_ID', google_cloud_project_id, 'Google' )
+		
+		google_cloud_location = st.text_input( 'Google Cloud Location',
+			value=get_runtime_config_value( 'google_cloud_location', 'GOOGLE_CLOUD_LOCATION',
+				'GOOGLE_CLOUD_LOCATION' ),
+			help='Overrides GOOGLE_CLOUD_LOCATION from config.py for this session only.',
+			key='sidebar_google_cloud_location' )
+		
+		sync_provider_config( 'google_cloud_location', 'GOOGLE_CLOUD_LOCATION',
+			'GOOGLE_CLOUD_LOCATION', google_cloud_location, 'Google' )
 
 # ==============================================================================
 # Page Setup

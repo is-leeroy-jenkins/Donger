@@ -177,8 +177,11 @@ def get_text( name: str, default: str ) -> str:
 	except Exception:
 		return default
 	
+
 # ----------------- CONSTANTS -------------------
 
+XAI_BASE_URL = 'https://api.x.ai/v1'
+XAI_MANAGEMENT_BASE_URL = os.getenv( 'XAI_MANAGEMENT_BASE_URL' )
 GOLD_DIVIDER = "<div style='height:2px;align:left;background:#FFCC01;margin:30px 0px 30px 0px;'></div>"
 APP_TITLE = 'Donger'
 APP_SUBTITLE = 'A mulit-modal AI based on Grok'
@@ -193,18 +196,9 @@ DONGER = '🧠'
 PROVIDERS = { 'Grok': 'grok', }
 PROMPT_VERSION = '16'
 LOCAL_AUDIO_PATH = r'stores/audio/conditions.mp3'
-XAI_API_KEY = os.getenv( 'XAI_API_KEY' )
-XAI_MANAGEMENT_KEY = os.getenv( 'XAI_MANAGEMENT_KEY' )
-XAI_BASE_URL = 'https://api.x.ai/v1'
-XAI_MANAGEMENT_BASE_URL = os.getenv( 'XAI_MANAGEMENT_BASE_URL' )
 DONGR_LOGO = r'resources/images/dngr-logo.png'
 GROK = '𝕏'
 GROK_AVATAR = r'resources/images/dngr-avatar.png'
-GOOGLE_API_KEY = os.getenv( 'GOOGLE_API_KEY' )
-GOOGLE_CSE_ID = os.getenv( 'GOOGLE_CSE_ID' )
-GOOGLE_CLOUD_LOCATION = os.getenv( 'GOOGLE_CLOUD_LOCATION' )
-GOOGLE_CLOUD_PROJECT_ID = os.getenv( 'GOOGLE_CLOUD_PROJECT_ID' )
-GOOGLEMAPS_API_KEY = os.getenv( 'GOOGLEMAPS_API_KEY' )
 OUTPUT_FILE_NAME = "donger.wav"
 SAMPLE_RATE = 48000
 MODELS = [ 'gpt-5-nano-2025-08-07', 'gpt-4.1-nano-2025-04-14', 'gpt-4o-mini', ]
@@ -216,6 +210,16 @@ LOG_DIR: Path = get_path( 'LOG_DIR', ROOT_DIR / 'logging' )
 LOG_PATH: str = get_text( 'LOG_PATH', str( LOG_DIR / 'Exceptions.db' ) )
 LOG_FILE: str = get_text( 'LOG_FILE', 'Exceptions' )
 FAVICON = r'resources/images/favicon.ico'
+
+# ------------ API KEYS ------------------------
+
+XAI_API_KEY = os.getenv( 'XAI_API_KEY' )
+XAI_MANAGEMENT_KEY = os.getenv( 'XAI_MANAGEMENT_KEY' )
+GOOGLE_API_KEY = os.getenv( 'GOOGLE_API_KEY' )
+GOOGLE_CSE_ID = os.getenv( 'GOOGLE_CSE_ID' )
+GOOGLE_CLOUD_LOCATION = os.getenv( 'GOOGLE_CLOUD_LOCATION' )
+GOOGLE_CLOUD_PROJECT_ID = os.getenv( 'GOOGLE_CLOUD_PROJECT_ID' )
+GOOGLEMAPS_API_KEY = os.getenv( 'GOOGLEMAPS_API_KEY' )
 
 # ---------------- GROK CONFIG ------------------
 
