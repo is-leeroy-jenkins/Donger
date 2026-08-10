@@ -5,7 +5,9 @@
 `app.py` is the main Streamlit application module for Donger. It provides the application shell,
 initializes runtime state, renders the user interface, and routes user actions to Gemini provider
 wrappers and local data workflows.
-![](../images/Donger-classes.png)
+___
+
+![](../images/donger-classmap.png)
 ## Responsibilities
 
 | Area                 | Responsibility                                                                                                                      |

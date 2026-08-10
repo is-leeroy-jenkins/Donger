@@ -1,4 +1,4 @@
-![](images/Donger-project.png)
+![](images/donger-project.png)
 
 
 
@@ -14,7 +14,7 @@ The application is designed for federal data analysis, budget execution support,
 | [Configuration](configuration.md)     | Configure API keys, Google Cloud settings, paths, local storage, and documentation publishing values.                  |
 | [User Guide](user-guide.md)           | Use Donger's text, image, audio, embedding, document, files, stores, bucket, prompt, export, and data modes.             |
 | [Architecture](architecture.md)       | Understand the Streamlit shell, Gemini wrappers, configuration layer, persistence, retrieval, and documentation model. |
-| [API Reference](api/gemini.md)        | Render Google-style docstrings from import-safe Python modules with mkdocstrings.                                      |
+| [API Reference](api/grok.md)          | Render Google-style docstrings from import-safe Python modules with mkdocstrings.                                      |
 
 ## Core Capabilities
 
