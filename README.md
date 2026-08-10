@@ -1,6 +1,6 @@
 ###### Donger
 
-![](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/Donger_Project.png)
+![](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/images/dongr-project.png)
 
 <p align="center">
   <a href="#-demo">Demo</a>
