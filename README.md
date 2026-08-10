@@ -52,7 +52,9 @@ provider modes are not part of this version.
 | 🧩 **Prompt Engineering** | Create, search, edit, version, convert, and delete reusable prompt records |
 | 🏛️ **Data Management** | Import, profile, filter, visualize, export, index, alter, and query local SQLite data |
 
+___
 
+![](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/images/donger-architecture.png)
 
 
 ## 🧊 Azure
