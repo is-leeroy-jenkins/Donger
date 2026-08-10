@@ -54,6 +54,9 @@ provider modes are not part of this version.
 | 🧩 **Prompt Engineering** | Create, search, edit, version, convert, and delete reusable prompt records |
 | 🏛️ **Data Management** | Import, profile, filter, visualize, export, index, alter, and query local SQLite data |
 
+
+
+
 ## 🧊 Azure
 
 [![Containerized](https://img.shields.io/badge/Docker-App-2496ED?logo=docker&logoColor=white)](https://Donger.thankfulocean-66471d87.eastus.azurecontainerapps.io)
