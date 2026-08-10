@@ -2,7 +2,7 @@
 
 ![](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/images/dongr-project.png)
 
-<p align="center">
+<p align="left">
   <a href="#-demo">Demo</a>
   &bull;
   <a href="#core-capabilities">Core Capabilities</a>
@@ -26,7 +26,7 @@ ___
 
 [![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-0078FC?style=for-the-badge&logo=github)](https://is-leeroy-jenkins.github.io/Donger/)
 
-Donger is a Grok-powered, multimodal Streamlit application for federal budget, financial
+Donger is a xAI Grok-powered, multimodal Streamlit application for federal budget, financial
 management, defense, and policy analysis. It combines conversational and structured text
 generation, image and audio workflows, document-grounded question answering, embeddings, xAI
 file and Collection management, prompt governance, and SQLite-based data administration in one
@@ -83,7 +83,7 @@ provider modes are not part of this version.
 
 ### xAI Grok
 
-Donger routes provider-backed functionality through the local `grok` wrapper. The interface
+Donger routes provider-backed functionality through the local `grok` class. The interface
 discovers wrapper capabilities at runtime and exposes only modes backed by an available Grok
 class. The configured model families include Grok reasoning/text models and Grok image-generation
 and image-editing models.
@@ -120,14 +120,14 @@ fine-tuned model directly in the current source.
 Obtain xAI credentials using the project’s [Grok API setup instructions](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/setup/xai.md),
 then configure the environment as described in the [environment setup guide](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/setup/environments.md).
 
-| Variable | Required | Purpose |
-| --- | --- | --- |
-| `XAI_API_KEY` | Yes | Grok inference, generation, embeddings, and standard file operations |
-| `XAI_MANAGEMENT_KEY` | For management workflows | xAI Collection and management-plane operations when required by the wrapper |
-| `XAI_MANAGEMENT_BASE_URL` | Optional | Overrides the configured xAI management endpoint |
-| `LOG_DIR` | Optional | Overrides the local exception-log directory |
-| `LOG_PATH` | Optional | Overrides the SQLite exception-log path |
-| `LOG_FILE` | Optional | Overrides the exception-log table or logical file name |
+| Variable                  | Required                 | Purpose                                                                     |
+|---------------------------|--------------------------|-----------------------------------------------------------------------------|
+| `XAI_API_KEY`             | Yes                      | Grok inference, generation, embeddings, and standard file operations        |
+| `XAI_MANAGEMENT_KEY`      | For management workflows | xAI Collection and management-plane operations when required by the wrapper |
+| `XAI_MANAGEMENT_BASE_URL` | Optional                 | Overrides the configured xAI management endpoint                            |
+| `LOG_DIR`                 | Optional                 | Overrides the local exception-log directory                                 |
+| `LOG_PATH`                | Optional                 | Overrides the SQLite exception-log path                                     |
+| `LOG_FILE`                | Optional                 | Overrides the exception-log table or logical file name                      |
 
 The standard xAI API base URL is configured as `https://api.x.ai/v1`. API keys may also be entered
 at runtime through the Streamlit sidebar. Treat credentials as secrets and do not commit them to
@@ -213,14 +213,14 @@ The repository must also contain the project-local `grok` wrapper and `boogr` pa
 
 ## Data Storage & Architecture
 
-| Layer | Responsibility |
-| --- | --- |
-| Streamlit UI | Mode selection, session state, controls, previews, tables, charts, and downloads |
-| Grok wrapper | xAI text, image, audio, embeddings, files, and Collections API contracts |
-| Local processing | Document extraction, cleaning, chunking, tokenization, similarity scoring, and response normalization |
-| SQLite | Prompt records, imported analytical data, embeddings, metadata, and exception logging |
-| xAI Files and Collections | Provider-hosted document lifecycle and managed retrieval resources |
-| Resources | Application images, avatars, favicon, and supporting static assets |
+| Layer                     | Responsibility                                                                                        |
+|---------------------------|-------------------------------------------------------------------------------------------------------|
+| Streamlit UI              | Mode selection, session state, controls, previews, tables, charts, and downloads                      |
+| Grok wrapper              | xAI text, image, audio, embeddings, files, and Collections API contracts                              |
+| Local processing          | Document extraction, cleaning, chunking, tokenization, similarity scoring, and response normalization |
+| SQLite                    | Prompt records, imported analytical data, embeddings, metadata, and exception logging                 |
+| xAI Files and Collections | Provider-hosted document lifecycle and managed retrieval resources                                    |
+| Resources                 | Application images, avatars, favicon, and supporting static assets                                    |
 
 Local prompt and data records persist in SQLite. Streamlit interaction state is session-scoped.
 xAI-hosted files and Collections persist according to the xAI account and API lifecycle.
@@ -342,23 +342,23 @@ U.S.C. 1511 - 1514 that the President review Federal expenditures at least four 
 
 ## 🖥 Core Runtime Requirements
 
-| Category | Component / Library | Required | Purpose / Notes |
-| --- | --- | --- | --- |
-| **Core Runtime** | Python | Yes | Application runtime; Python 3.11 is recommended |
-| | Streamlit | Yes | Interactive web interface and session state |
-| | pip and `venv` | Yes | Dependency installation and environment isolation |
-| **Provider Integration** | Project-local `grok` wrapper | Yes | xAI inference, media, embeddings, files, and Collections operations |
-| | Project-local `boogr` package | Yes | Structured errors and SQLite exception logging |
-| **Data and Analytics** | pandas | Yes | Tables, import/export, profiling, and transformations |
-| | NumPy | Yes | Vector and numerical operations |
-| | Plotly | Yes | Interactive analytical visualizations |
-| | SQLite | Built in | Prompt, data, embedding, metadata, and log persistence |
-| | `sqlite-vec` | Feature-dependent | SQLite vector extension used by local vector operations |
-| **Documents and Embeddings** | PyMuPDF (`fitz`) | Feature-dependent | PDF extraction and rendering |
-| | sentence-transformers | Yes | Local document and query embeddings |
-| | tiktoken | Yes | Token counting and chunk sizing |
-| | openpyxl | Feature-dependent | Excel import and export through pandas |
-| **Media** | Pillow and audio codecs | Feature-dependent | Image handling and browser-compatible audio processing |
+| Category                     | Component / Library           | Required          | Purpose / Notes                                                     |
+|------------------------------|-------------------------------|-------------------|---------------------------------------------------------------------|
+| **Core Runtime**             | Python                        | Yes               | Application runtime; Python 3.11 is recommended                     |
+|                              | Streamlit                     | Yes               | Interactive web interface and session state                         |
+|                              | pip and `venv`                | Yes               | Dependency installation and environment isolation                   |
+| **Provider Integration**     | Project-local `grok` wrapper  | Yes               | xAI inference, media, embeddings, files, and Collections operations |
+|                              | Project-local `boogr` package | Yes               | Structured errors and SQLite exception logging                      |
+| **Data and Analytics**       | pandas                        | Yes               | Tables, import/export, profiling, and transformations               |
+|                              | NumPy                         | Yes               | Vector and numerical operations                                     |
+|                              | Plotly                        | Yes               | Interactive analytical visualizations                               |
+|                              | SQLite                        | Built in          | Prompt, data, embedding, metadata, and log persistence              |
+|                              | `sqlite-vec`                  | Feature-dependent | SQLite vector extension used by local vector operations             |
+| **Documents and Embeddings** | PyMuPDF (`fitz`)              | Feature-dependent | PDF extraction and rendering                                        |
+|                              | sentence-transformers         | Yes               | Local document and query embeddings                                 |
+|                              | tiktoken                      | Yes               | Token counting and chunk sizing                                     |
+|                              | openpyxl                      | Feature-dependent | Excel import and export through pandas                              |
+| **Media**                    | Pillow and audio codecs       | Feature-dependent | Image handling and browser-compatible audio processing              |
 
 Install the exact versions pinned by the repository’s `requirements.txt`. Provider model names and
 capabilities can change independently of Donger; use models returned by the installed Grok wrapper
