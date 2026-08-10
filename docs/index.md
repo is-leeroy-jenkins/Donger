@@ -1,4 +1,4 @@
-![](images/donger-project.png)
+![](images/dongr-project.png)
 
 
 
