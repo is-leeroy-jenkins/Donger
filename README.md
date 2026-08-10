@@ -24,11 +24,11 @@ ___
 
 [![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-0078FC?style=for-the-badge&logo=github)](https://is-leeroy-jenkins.github.io/Donger/)
 
-Donger is a xAI Grok-powered, multimodal application written in Python for federal budget, financial
-management, defense, and policy analysis. It combines conversational and structured text
-generation, image and audio workflows, document-grounded question answering, embeddings, xAI
-file and Collection management, prompt governance, and SQLite-based data administration in one
-analyst-oriented interface.
+Donger is a xAI Grok-powered, multimodal application written in Python for data, financial
+and policy analysis. It combines conversational ai and structured text
+generation, image and audio workflows, document-grounded question answering,  xAI
+file analysis and Collection management, prompt engineering, and SQLite-based data administration in one
+analyst-oriented interface. Food is not included.
 
 
 
