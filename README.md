@@ -2,7 +2,7 @@
 
 ![](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/images/dongr-project.png)
 
-<p align="left">
+<p align="center">
   <a href="#core-capabilities">Core Capabilities</a>
   &bull;
   <a href="#model-integration">Model Integration</a>
