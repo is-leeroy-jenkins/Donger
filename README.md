@@ -34,7 +34,7 @@ analyst-oriented interface.
 
 ## 🎥 Demo
 
-![](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/images/Donger-demo.gif)
+![](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/images/donger-demo.gif)
 
 ## Core Capabilities
 
