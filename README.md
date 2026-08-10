@@ -26,7 +26,7 @@ ___
 
 Donger is a xAI Grok-powered, multimodal application written in Python for data, financial
 and policy analysis. It combines conversational ai and structured text
-generation, image and audio workflows, document-grounded question answering, xAI
+generation, image and audio workflows, document-grounded question answering,
 file analysis and Collection management, prompt engineering, and SQLite-based data administration in one
 analyst-oriented interface. Food is not included.
 
