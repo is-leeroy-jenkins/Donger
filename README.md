@@ -120,7 +120,7 @@ fine-tuned model directly in the current source.
 
 ## 🔑 Configuration
 
-Obtain xAI credentials using the project’s [Grok API setup instructions](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/setup/xai.md),
+Obtain xAI credentials using the project’s [Grok API setup instructions](https://docs.x.ai/overview,
 then configure the environment as described in the [environment setup guide](https://github.com/is-leeroy-jenkins/Donger/blob/main/resources/setup/environments.md).
 
 | Variable                  | Required                 | Purpose                                                                     |

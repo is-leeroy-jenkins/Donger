@@ -1,48 +1,42 @@
-google-genai
-google-cloud-storage
-numpy==1.26.4
-openpyxl
-openai
-pydantic>=2.7,<2.10
-typing_extensions>=4.11,<5
-pymupdf
-httpx>=0.28.1
-reportlab>=4.0.8
-streamlit
-streamlit-extras
-streamlit-pdf
-pandas
-python-dotenv
-python-docx
-tabulate>=0.9.0
-sentence-transformers==2.7.0
-transformers==4.41.2
-huggingface_hub==0.23.5
-safetensors==0.4.3
-tiktoken
-plotly-express
+# Donger production runtime for Python 3.11 / Linux x86-64.
+# PyTorch is installed separately from the CPU-only index in Dockerfile.
 
+# Application framework and presentation
+streamlit
+numpy==1.26.4
+pandas
+plotly
+tiktoken
+
+# xAI Grok provider integration
+openai
 xai-sdk
-pillow>=10.0.0
 requests==2.32.4
 
-torch==2.4.1
-torchvision==0.19.1
+# grok.py currently imports ListFilesResponse from google.genai.types.
+google-genai
 
+# Document processing and local semantic retrieval
+pymupdf
+sentence-transformers==2.7.0
+transformers==4.41.2
+huggingface-hub==0.23.5
+safetensors==0.4.3
 scikit-learn==1.5.1
 scipy==1.13.1
-regex==2024.5.15
 sentencepiece==0.2.0
+sqlite-vec==0.1.9
+
+# Required transitive packages retained as explicit compatibility pins
+pydantic>=2.7,<2.10
+typing-extensions>=4.11,<5
+httpx>=0.28.1
+regex==2024.5.15
 tqdm==4.66.4
 filelock==3.15.4
 fsspec==2024.6.1
 packaging>=25,<26
 pyyaml==6.0.1
 
-# MkDocs
-mkdocs
-mkdocs-material
-mkdocstrings[python]
-mkdocs-autorefs
-pymdown-extensions
-black
+# boogr.py is a project-local module imported by app.py and grok.py.
+# Include boogr.py at the repository root so COPY . /app makes it importable.

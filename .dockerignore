@@ -1,0 +1,34 @@
+.git
+.github
+.idea
+.vscode
+.venv
+venv
+__pycache__
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info
+.env
+.env.*
+.pytest_cache
+.mypy_cache
+.ruff_cache
+build
+dist
+docs
+site
+logging/*
+*.log
+
+# Local databases are runtime state. Seed Data.db separately in Azure Files when needed.
+stores/sqlite/*.db
+stores/sqlite/*.db-shm
+stores/sqlite/*.db-wal
+
+# Local user-generated audio is not part of the application image.
+stores/audio/*
+
+# Preserve empty runtime directories when their placeholders are committed.
+!stores/sqlite/.gitkeep
+!stores/audio/.gitkeep
