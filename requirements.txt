@@ -39,6 +39,7 @@ fsspec==2024.6.1
 packaging>=25,<26
 pyyaml==6.0.1
 
+# MkDocs
 mkdocs
 mkdocs-material
 mkdocstrings[python]
